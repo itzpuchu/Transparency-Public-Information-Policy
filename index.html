@@ -5,15 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NovaQuest Rules Hub</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
-  body { scroll-behavior: smooth; }
-  .collapse-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-  .collapse-content.show { max-height: 1000px; }
-  .section { display: none; }
-  .section.active { display: block; }
+  body {
+    scroll-behavior: smooth;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    border-left: 6px solid;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .glass-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.7);
+  }
+  .collapse-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+  .collapse-content.show { max-height: 2000px; }
   button.collapse-btn { transition: all 0.3s ease; }
-  button.collapse-btn:hover { transform: scale(1.02); color: #F472B6; }
+  button.collapse-btn:hover { color: #f472b6; }
   .rotate-180 { transform: rotate(180deg); transition: transform 0.3s; }
+  nav button { transition: all 0.3s ease; font-weight: bold; }
+  nav button:hover { color: #f472b6; transform: scale(1.1); }
 </style>
 <script>
   function toggleCollapse(id, arrowId) {
@@ -29,85 +46,79 @@
   }
 </script>
 </head>
-<body class="bg-gray-900 text-gray-200 font-sans">
+<body class="text-gray-100 font-sans">
 
-<!-- Navigation -->
-<header class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-6 shadow-lg sticky top-0 z-50">
-  <nav class="max-w-6xl mx-auto flex justify-center space-x-6">
-    <button onclick="showSection('transparency')" class="px-5 py-2 font-semibold hover:text-pink-400 transition-all">Transparency</button>
-    <button onclick="showSection('staff')" class="px-5 py-2 font-semibold hover:text-indigo-400 transition-all">Staff Rules</button>
-    <button onclick="showSection('ingame')" class="px-5 py-2 font-semibold hover:text-green-400 transition-all">In-Game Rules</button>
-    <button onclick="showSection('discord')" class="px-5 py-2 font-semibold hover:text-purple-400 transition-all">Discord Rules</button>
+<!-- Sidebar Navigation -->
+<header class="sticky top-0 z-50 bg-black/50 backdrop-blur-md shadow-md">
+  <nav class="max-w-7xl mx-auto flex justify-center space-x-8 py-4">
+    <button onclick="showSection('transparency')">Transparency</button>
+    <button onclick="showSection('staff')">Staff Rules</button>
+    <button onclick="showSection('ingame')">In-Game Rules</button>
+    <button onclick="showSection('discord')">Discord Rules</button>
   </nav>
 </header>
 
-<main class="max-w-6xl mx-auto py-10 px-4 space-y-8">
+<main class="max-w-6xl mx-auto py-12 px-6 space-y-12">
 
   <!-- Transparency Section -->
   <section id="transparency" class="section active">
-    <div class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-3xl shadow-2xl p-10 border-l-8 border-pink-500 hover:scale-105 transform transition-all">
-      <button onclick="toggleCollapse('transparency-content','arrow-transparency')" class="w-full flex items-center justify-between collapse-btn focus:outline-none">
+    <div class="glass-card border-pink-500 p-10">
+      <button onclick="toggleCollapse('transparency-content','arrow-transparency')" class="w-full flex justify-between items-center collapse-btn">
         <h2 class="text-4xl font-extrabold text-pink-400 drop-shadow-lg">Transparency & Public Policy</h2>
-        <span id="arrow-transparency" class="text-pink-400 font-bold text-2xl transition-transform">▼</span>
+        <i id="arrow-transparency" class="fa-solid fa-chevron-down text-pink-400 text-2xl"></i>
       </button>
-      <div id="transparency-content" class="collapse-content mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
+      <div id="transparency-content" class="collapse-content mt-6 space-y-4 text-gray-200 leading-relaxed text-lg">
         <p>
-          As the founder of <strong>NovaQuest</strong>, all relevant information will be made public to ensure fairness and accountability. This approach guarantees that the community can trust both staff and leadership decisions.
-        </p>
-        <p>
-          Transparency ensures:
+          As the founder of <strong>NovaQuest</strong>, all information about rules, staff actions, and community policies is fully public. Transparency ensures trust, accountability, and fairness.
         </p>
         <ul class="list-disc pl-8 space-y-2">
           <li>Players know what to expect from staff</li>
           <li>Punishments are consistent</li>
-          <li>Appeals and progress are visible</li>
+          <li>Appeals and decisions are visible</li>
         </ul>
         <p>
-          Rules and policies are designed with no loopholes, while allowing staff and players to learn from mistakes and maintain a fair, safe, and fun environment.
+          Rules are airtight with no loopholes. Mistakes happen, but progress is always visible.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Staff Rules Section -->
+  <!-- Staff Section -->
   <section id="staff" class="section">
     <div class="space-y-6">
-      <div class="bg-gray-800 rounded-3xl shadow-xl p-8 border-l-8 border-indigo-500 hover:scale-105 transform transition-all">
-        <h1 class="text-4xl font-extrabold text-indigo-300 mb-4 drop-shadow-md">NovaQuest Staff Rules & Expectations</h1>
+      <div class="glass-card border-indigo-500 p-10">
+        <h1 class="text-4xl font-extrabold text-indigo-300 mb-4 drop-shadow-lg">Staff Rules & Expectations</h1>
         <p class="text-gray-200 text-lg">
-          This staff guide is publicly available to ensure transparency and accountability. Players can provide feedback if a staff member is believed to violate these guidelines.
+          Staff guidelines are public to maintain accountability and transparency. Players may submit feedback if staff members violate rules.
         </p>
       </div>
 
-      <!-- General Staff Duties -->
-      <div class="bg-gray-700 rounded-2xl p-6 shadow-md border-l-4 border-indigo-300 hover:scale-102 transform transition-all">
-        <button onclick="toggleCollapse('duties','arrow-duties')" class="w-full flex justify-between items-center collapse-btn focus:outline-none">
+      <div class="glass-card border-indigo-300 p-6">
+        <button onclick="toggleCollapse('duties','arrow-duties')" class="w-full flex justify-between items-center collapse-btn">
           <h2 class="text-2xl font-bold text-indigo-300">General Staff Duties</h2>
-          <span id="arrow-duties" class="text-indigo-300 font-bold text-xl">▼</span>
+          <i id="arrow-duties" class="fa-solid fa-chevron-down text-indigo-300 text-xl"></i>
         </button>
         <div id="duties" class="collapse-content mt-3 text-gray-200 space-y-2">
           <ul class="list-disc pl-6">
-            <li>Prioritize staff responsibilities over gameplay.</li>
-            <li>Maintain professionalism in all interactions.</li>
-            <li>Follow hierarchy rules.</li>
-            <li>Do not hint at promotions.</li>
-            <li>Report bugs within 24 hours; exploiting unreported bugs is a strikeable offense.</li>
-            <li>Never leak confidential staff information.</li>
+            <li>Prioritize responsibilities over gameplay</li>
+            <li>Maintain professionalism</li>
+            <li>Follow hierarchy rules</li>
+            <li>Never leak confidential info</li>
+            <li>Report unhandled bugs</li>
           </ul>
         </div>
       </div>
 
-      <!-- Hierarchy & Permissions -->
-      <div class="bg-gray-700 rounded-2xl p-6 shadow-md border-l-4 border-pink-400 hover:scale-102 transform transition-all">
-        <button onclick="toggleCollapse('permissions','arrow-permissions')" class="w-full flex justify-between items-center collapse-btn focus:outline-none">
+      <div class="glass-card border-pink-400 p-6">
+        <button onclick="toggleCollapse('permissions','arrow-permissions')" class="w-full flex justify-between items-center collapse-btn">
           <h2 class="text-2xl font-bold text-pink-300">Hierarchy & Permissions</h2>
-          <span id="arrow-permissions" class="text-pink-300 font-bold text-xl">▼</span>
+          <i id="arrow-permissions" class="fa-solid fa-chevron-down text-pink-300 text-xl"></i>
         </button>
         <div id="permissions" class="collapse-content mt-3 text-gray-200 space-y-2">
           <ul class="list-disc pl-6">
             <li><strong>Helpers:</strong> Warn, Kick, Mute</li>
             <li><strong>JrMods:</strong> Warn, Kick, Mute, Ban, System Access</li>
-            <li><strong>Mods:</strong> Guide lower staff, reverse standard punishments if necessary</li>
+            <li><strong>Mods:</strong> Guide Helpers & JrMods</li>
             <li><strong>SrMods:</strong> Mentor lower staff, advanced permissions</li>
             <li><strong>Admins+:</strong> Full permissions, confidential commands</li>
           </ul>
@@ -119,31 +130,27 @@
   <!-- In-Game Rules Section -->
   <section id="ingame" class="section">
     <div class="space-y-6">
-      <div class="bg-gray-800 rounded-3xl shadow-xl p-8 border-l-8 border-green-500 hover:scale-105 transform transition-all">
-        <h1 class="text-4xl font-extrabold text-green-300 mb-4 drop-shadow-md">NovaQuest In-Game Rules</h1>
-        <p class="text-gray-200 text-lg">
-          Rules are designed to keep gameplay fair, safe, and enjoyable for everyone. Ignorance is not an excuse.
-        </p>
+      <div class="glass-card border-green-500 p-10">
+        <h1 class="text-4xl font-extrabold text-green-300 mb-4 drop-shadow-lg">NovaQuest In-Game Rules</h1>
+        <p class="text-gray-200 text-lg">All players must follow rules to ensure fair, safe, and fun gameplay. Ignorance is not an excuse.</p>
       </div>
 
-      <!-- Unfair Advantage / Competitive -->
-      <div class="bg-gray-700 rounded-2xl p-6 shadow-md border-l-4 border-red-400 hover:scale-102 transform transition-all">
-        <h2 class="text-2xl font-bold text-red-300 mb-2">Unfair Advantage / Competitive Violations</h2>
+      <div class="glass-card border-red-400 p-6">
+        <h2 class="text-2xl font-bold text-red-300 mb-2">Unfair Advantage / Competitive</h2>
         <ul class="list-disc pl-6 text-gray-200 space-y-1">
-          <li>Use of hacked clients or macros is strictly prohibited.</li>
-          <li>AFK automation, boosting, X-Ray, Fly, KillAura, etc. are banned.</li>
-          <li>Regular players: progressive bans (1st → 3d, 2nd → 7d, 3rd → 14d)</li>
+          <li>No hacked clients, macros, or exploits.</li>
+          <li>AFK automation, boosting, X-Ray, Fly, KillAura, etc. prohibited.</li>
+          <li>Regular players: progressive bans (3d → 7d → 14d)</li>
           <li>Competitive: 3-day ban + stat wipe + leaderboard removal + season ban</li>
         </ul>
       </div>
 
-      <!-- IRL Trading & Gambling -->
-      <div class="bg-gray-700 rounded-2xl p-6 shadow-md border-l-4 border-teal-400 hover:scale-102 transform transition-all">
+      <div class="glass-card border-teal-400 p-6">
         <h2 class="text-2xl font-bold text-teal-300 mb-2">IRL Trading & Gambling</h2>
         <ul class="list-disc pl-6 text-gray-200 space-y-1">
-          <li>Trading or selling items/services outside NovaQuest is forbidden.</li>
-          <li>Player-run casinos or gambling are prohibited.</li>
-          <li>NovaQuest-run events are allowed if compliant with EULA.</li>
+          <li>No IRL trading outside NovaQuest</li>
+          <li>No player-run casinos or gambling</li>
+          <li>NovaQuest-approved events are allowed</li>
         </ul>
       </div>
     </div>
@@ -152,48 +159,43 @@
   <!-- Discord Rules Section -->
   <section id="discord" class="section">
     <div class="space-y-6">
-      <div class="bg-gray-800 rounded-3xl shadow-xl p-8 border-l-8 border-purple-500 hover:scale-105 transform transition-all">
-        <h1 class="text-4xl font-extrabold text-purple-300 mb-4 drop-shadow-md">NovaQuest Discord Rules</h1>
-        <p class="text-gray-200 text-lg">
-          All members must follow rules to maintain a safe, respectful, and fun environment.
-        </p>
+      <div class="glass-card border-purple-500 p-10">
+        <h1 class="text-4xl font-extrabold text-purple-300 mb-4 drop-shadow-lg">NovaQuest Discord Rules</h1>
+        <p class="text-gray-200 text-lg">All members must follow rules to maintain a safe, respectful, and fun community.</p>
       </div>
 
-      <div class="bg-gray-700 rounded-2xl p-6 shadow-md border-l-4 border-yellow-400 hover:scale-102 transform transition-all">
-        <button onclick="toggleCollapse('discord-general','arrow-discord-general')" class="w-full flex justify-between items-center collapse-btn focus:outline-none">
+      <div class="glass-card border-yellow-400 p-6">
+        <button onclick="toggleCollapse('discord-general','arrow-discord-general')" class="w-full flex justify-between items-center collapse-btn">
           <h2 class="text-2xl font-bold text-yellow-300">General Conduct</h2>
-          <span id="arrow-discord-general" class="text-yellow-300 font-bold text-xl">▼</span>
+          <i id="arrow-discord-general" class="fa-solid fa-chevron-down text-yellow-300 text-xl"></i>
         </button>
         <div id="discord-general" class="collapse-content mt-2 text-gray-200 space-y-2">
           <ul class="list-disc pl-6">
-            <li>Be respectful: no harassment, bullying, hate speech, or discrimination.</li>
-            <li>No spamming, flooding, or excessive caps.</li>
-            <li>Follow staff instructions at all times.</li>
+            <li>Respect all members</li>
+            <li>No harassment, bullying, or hate speech</li>
+            <li>No spam or advertising</li>
+            <li>Follow staff instructions</li>
           </ul>
         </div>
       </div>
 
-      <div class="bg-gray-700 rounded-2xl p-6 shadow-md border-l-4 border-green-400 hover:scale-102 transform transition-all">
-        <button onclick="toggleCollapse('discord-voice','arrow-discord-voice')" class="w-full flex justify-between items-center collapse-btn focus:outline-none">
+      <div class="glass-card border-green-400 p-6">
+        <button onclick="toggleCollapse('discord-voice','arrow-discord-voice')" class="w-full flex justify-between items-center collapse-btn">
           <h2 class="text-2xl font-bold text-green-300">Voice Chat Rules</h2>
-          <span id="arrow-discord-voice" class="text-green-300 font-bold text-xl">▼</span>
+          <i id="arrow-discord-voice" class="fa-solid fa-chevron-down text-green-300 text-xl"></i>
         </button>
         <div id="discord-voice" class="collapse-content mt-2 text-gray-200 space-y-2">
           <ul class="list-disc pl-6">
-            <li>No harassment, bullying, or discrimination in voice channels.</li>
-            <li>Keep conversations respectful and appropriate for all members.</li>
+            <li>No harassment or discrimination in voice channels</li>
+            <li>Keep discussions respectful and appropriate</li>
           </ul>
         </div>
       </div>
-
     </div>
   </section>
 
 </main>
 
-<footer class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white text-center py-6 shadow-inner mt-10">
+<footer class="bg-black/70 backdrop-blur-md text-center py-6 mt-12 text-gray-200">
   &copy; 2026 NovaQuest. All rights reserved.
 </footer>
-
-</body>
-</html>
