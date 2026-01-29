@@ -1,0 +1,29 @@
+<section class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-pink-500 max-w-4xl mx-auto my-6">
+  <button onclick="toggleCollapse('transparency')" class="w-full flex items-center justify-between focus:outline-none">
+    <h2 class="text-2xl font-bold text-pink-300">Transparency & Public Information Policy</h2>
+    <span class="text-pink-300 font-bold">▼</span>
+  </button>
+  <div id="transparency" class="hidden mt-4 text-gray-200 space-y-3">
+    <p>
+      As the founder of <strong>NovaQuest</strong>, I am committed to making all relevant information public to the community. This decision comes from my experience as staff on multiple servers, where founders were not transparent and rules were created on the fly. NovaQuest will be different.
+    </p>
+    <p>
+      By sharing information openly, both staff and players can build trust and work together effectively. All decisions regarding the community—including in-game rules, staff expectations, punishments, and appeals—will be public. This ensures:
+    </p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li>Players know exactly what to expect from staff</li>
+      <li>Punishments are clear and consistent</li>
+      <li>Appeals are visible, showing the second chances we strive to provide</li>
+    </ul>
+    <p>
+      Our goal is to make rules and policies as clear as possible, with no loopholes, while maintaining fairness. Everyone makes mistakes, and this approach allows the community to see progress, accountability, and the efforts we make to keep NovaQuest safe, fair, and enjoyable for all.
+    </p>
+  </div>
+</section>
+
+<script>
+  function toggleCollapse(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle("hidden");
+  }
+</script>
