@@ -1,32 +1,116 @@
-<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border-l-8 border-pink-500 max-w-4xl mx-auto my-8 transition-transform transform hover:scale-105">
-  <button onclick="toggleCollapse('transparency')" class="w-full flex items-center justify-between focus:outline-none">
-    <h2 class="text-3xl font-extrabold text-pink-400 drop-shadow-lg">Transparency & Public Information Policy</h2>
-    <span id="arrow" class="text-pink-400 font-bold text-xl transition-transform duration-300">▼</span>
-  </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaQuest Rules Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    function toggleCollapse(id, arrowId) {
+      const el = document.getElementById(id);
+      const arrow = document.getElementById(arrowId);
+      el.classList.toggle("hidden");
+      arrow.classList.toggle("rotate-180");
+    }
+  </script>
+</head>
+<body class="bg-gray-900 text-gray-200 font-sans">
 
-  <div id="transparency" class="hidden mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
-    <p>
-      As the founder of <strong>NovaQuest</strong>, I am committed to making all relevant information public to the community. This decision comes from my experience as staff on multiple servers, where founders were not transparent and rules were created on the fly. NovaQuest will be different.
-    </p>
-    <p>
-      By sharing information openly, both staff and players can build trust and work together effectively. All decisions regarding the community—including in-game rules, staff expectations, punishments, and appeals—will be public. This ensures:
-    </p>
-    <ul class="list-disc pl-8 space-y-2">
-      <li>Players know exactly what to expect from staff</li>
-      <li>Punishments are clear and consistent</li>
-      <li>Appeals are visible, showing the second chances we strive to provide</li>
-    </ul>
-    <p>
-      Our goal is to make rules and policies as clear as possible, with no loopholes, while maintaining fairness. Everyone makes mistakes, and this approach allows the community to see progress, accountability, and the efforts we make to keep NovaQuest safe, fair, and enjoyable for all.
-    </p>
+  <div class="max-w-5xl mx-auto py-10 px-4 space-y-6">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-5xl font-extrabold text-pink-400 drop-shadow-lg">NovaQuest Rules Hub</h1>
+      <p class="text-gray-300 mt-2 text-lg">Everything you need to know about rules, expectations, and transparency at NovaQuest</p>
+    </div>
+
+    <!-- Staff Rules & Expectations -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border-l-8 border-blue-500 transition-transform transform hover:scale-105">
+      <button onclick="toggleCollapse('staff', 'arrow1')" class="w-full flex items-center justify-between focus:outline-none">
+        <h2 class="text-3xl font-extrabold text-blue-400 drop-shadow-lg">Staff Rules & Expectations</h2>
+        <span id="arrow1" class="text-blue-400 font-bold text-xl transition-transform duration-300">▼</span>
+      </button>
+      <div id="staff" class="hidden mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
+        <ul class="list-disc pl-8 space-y-2">
+          <li>Staff are held to a higher standard than regular players.</li>
+          <li>Failure to comply with staff rules can result in immediate demotion.</li>
+          <li>Impolite behavior towards players or messages will result in strikes; staff have 3 strikes, reset every 6 months.</li>
+          <li>Bugs used for unfair advantage must be reported within 24 hours, or a strike will be issued.</li>
+          <li>Staff cannot close tickets unless the player hasn’t replied within 24 hours or is uncooperative (as decided by management).</li>
+          <li>Staff must remain professional at all times; ignoring players or trolling with commands is prohibited.</li>
+          <li>Staff are allowed to work for multiple games, except Helpers in their 14-day trainee period.</li>
+          <li>Promotions are fully managed by the founder and management team; staff cannot hint or promise promotions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- In-Game Rules -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border-l-8 border-green-500 transition-transform transform hover:scale-105">
+      <button onclick="toggleCollapse('ingame', 'arrow2')" class="w-full flex items-center justify-between focus:outline-none">
+        <h2 class="text-3xl font-extrabold text-green-400 drop-shadow-lg">In-Game Rules</h2>
+        <span id="arrow2" class="text-green-400 font-bold text-xl transition-transform duration-300">▼</span>
+      </button>
+      <div id="ingame" class="hidden mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
+        <ul class="list-disc pl-8 space-y-2">
+          <li>Using cheat software or unfair modifications (fly, x-ray, macros, nuker, etc.) is prohibited.</li>
+          <li>Alternative accounts are not allowed unless explicitly approved by the founder. Players sharing the same IP must submit a ticket for approval.</li>
+          <li>Intentional server or user attacks (lagging, DDoS, IP grabbing, doxxing) result in immediate network removal and reporting to Mojang and the server host.</li>
+          <li>IRL trading or selling anything outside the SunRealms Network is prohibited. Offers, suggestions, or attempts will result in removal from the network.</li>
+          <li>Player-run gambling or casinos are not allowed unless explicitly approved by NovaQuest (EULA compliance required).</li>
+          <li>Competitive violations (Unfair Advantage) punishments: <br>
+            <ul class="list-disc pl-6">
+              <li>Regular players: banned (first offense 3 days, second 7 days, third 14 days)</li>
+              <li>Competitive players: 3-day ban + stats removal + removal from competitive modes for the rest of the season</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Discord Rules -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border-l-8 border-yellow-500 transition-transform transform hover:scale-105">
+      <button onclick="toggleCollapse('discord', 'arrow3')" class="w-full flex items-center justify-between focus:outline-none">
+        <h2 class="text-3xl font-extrabold text-yellow-400 drop-shadow-lg">Discord Rules</h2>
+        <span id="arrow3" class="text-yellow-400 font-bold text-xl transition-transform duration-300">▼</span>
+      </button>
+      <div id="discord" class="hidden mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
+        <ul class="list-disc pl-8 space-y-2">
+          <li>Be respectful to all members and staff. No harassment, discrimination, or bullying.</li>
+          <li>No spamming, advertising, or self-promotion.</li>
+          <li>No sharing personal information of yourself or others.</li>
+          <li>No malicious links, impersonation, or illegal activity.</li>
+          <li>Voice channels: no harassment, bullying, or discrimination; keep conversations appropriate and follow staff instructions.</li>
+          <li>Bots: no abuse, automation, or self-bots for unfair advantage.</li>
+          <li>Punishments: violations may result in warnings, mutes, kicks, or bans depending on severity. Serious security violations are immediately escalated.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Transparency & Public Information Policy -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl shadow-2xl p-8 border-l-8 border-pink-500 transition-transform transform hover:scale-105">
+      <button onclick="toggleCollapse('transparency', 'arrow4')" class="w-full flex items-center justify-between focus:outline-none">
+        <h2 class="text-3xl font-extrabold text-pink-400 drop-shadow-lg">Transparency & Public Information Policy</h2>
+        <span id="arrow4" class="text-pink-400 font-bold text-xl transition-transform duration-300">▼</span>
+      </button>
+      <div id="transparency" class="hidden mt-6 text-gray-200 space-y-4 text-lg leading-relaxed">
+        <p>
+          As the founder of <strong>NovaQuest</strong>, I am committed to making all relevant information public to the community. This decision comes from my experience as staff on multiple servers, where founders were not transparent and rules were created on the fly. NovaQuest will be different.
+        </p>
+        <p>
+          By sharing information openly, both staff and players can build trust and work together effectively. All decisions regarding the community—including in-game rules, staff expectations, punishments, and appeals—will be public. This ensures:
+        </p>
+        <ul class="list-disc pl-8 space-y-2">
+          <li>Players know exactly what to expect from staff</li>
+          <li>Punishments are clear and consistent</li>
+          <li>Appeals are visible, showing the second chances we strive to provide</li>
+        </ul>
+        <p>
+          Our goal is to make rules and policies as clear as possible, with no loopholes, while maintaining fairness. Everyone makes mistakes, and this approach allows the community to see progress, accountability, and the efforts we make to keep NovaQuest safe, fair, and enjoyable for all.
+        </p>
+      </div>
+    </section>
+
   </div>
-</section>
 
-<script>
-  function toggleCollapse(id) {
-    const el = document.getElementById(id);
-    const arrow = document.getElementById("arrow");
-    el.classList.toggle("hidden");
-    arrow.classList.toggle("rotate-180");
-  }
-</script>
+</body>
+</html>
