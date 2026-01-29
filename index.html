@@ -6,113 +6,250 @@
 <title>NovaQuest Rules Hub</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  .transition-colors { transition: background-color 0.3s ease; }
+  body { scroll-behavior: smooth; }
+  .collapse-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+  .collapse-content.show { max-height: 10000px; }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
 </style>
 <script>
-  function switchSection(id) {
-    // Hide all sections
-    const sections = document.querySelectorAll('.section-content');
-    sections.forEach(sec => sec.classList.add('hidden'));
-
-    // Show selected section
-    document.getElementById(id).classList.remove('hidden');
-
-    // Tabs active state
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => tab.classList.remove('bg-pink-400','text-white'));
-    document.getElementById(id + '-tab').classList.add('bg-pink-400','text-white');
+  function toggleCollapse(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('show');
   }
-
-  // Optional: show first section by default
-  window.addEventListener('DOMContentLoaded', () => switchSection('staff'));
+  function openTab(tabName) {
+    const tabs = document.querySelectorAll('.tab-content');
+    tabs.forEach(tab => tab.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    window.scrollTo(0,0);
+  }
 </script>
 </head>
 <body class="bg-gray-900 text-gray-200 font-sans">
 
 <!-- Header -->
 <header class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white py-6 shadow-lg">
-  <h1 class="text-4xl font-extrabold text-center">NovaQuest Rules Hub</h1>
-  <p class="text-center mt-2 text-gray-200 max-w-3xl mx-auto">
-    Transparency, fairness, and safety are our top priorities. Navigate through the tabs to view different rule sections.
-  </p>
+  <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center">
+    <h1 class="text-4xl font-extrabold mb-3 md:mb-0">NovaQuest Rules Hub</h1>
+    <div class="space-x-2">
+      <button onclick="openTab('transparency')" class="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded font-semibold">Transparency</button>
+      <button onclick="openTab('staff')" class="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 rounded font-semibold">Staff Rules</button>
+      <button onclick="openTab('ingame')" class="bg-green-500 hover:bg-green-600 px-4 py-2 rounded font-semibold">In-Game Rules</button>
+      <button onclick="openTab('discord')" class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded font-semibold">Discord Rules</button>
+    </div>
+  </div>
 </header>
 
-<!-- Tabs Navigation -->
-<nav class="flex justify-center flex-wrap gap-4 mt-6">
-  <button id="staff-tab" class="tab px-6 py-2 rounded-xl font-bold transition-colors" onclick="switchSection('staff')">Staff Rules</button>
-  <button id="ingame-tab" class="tab px-6 py-2 rounded-xl font-bold transition-colors" onclick="switchSection('ingame')">In-Game Rules</button>
-  <button id="discord-tab" class="tab px-6 py-2 rounded-xl font-bold transition-colors" onclick="switchSection('discord')">Discord Rules</button>
-  <button id="transparency-tab" class="tab px-6 py-2 rounded-xl font-bold transition-colors" onclick="switchSection('transparency')">Transparency</button>
-</nav>
+<main class="max-w-5xl mx-auto p-6 space-y-6">
 
-<!-- Content Sections -->
-<main class="max-w-5xl mx-auto p-6 space-y-6 mt-6">
-
-  <!-- STAFF RULES -->
-  <section id="staff" class="section-content hidden space-y-6">
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-indigo-500">
-      <h2 class="text-3xl font-bold text-indigo-300 mb-3">NovaQuest Staff Rules & Expectations</h2>
-      <p>
-        Staff are held to a higher standard than players. Players can submit feedback if staff violate these rules.
-      </p>
-    </div>
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-indigo-500">
-      <h3 class="text-2xl font-bold text-indigo-300 mb-2">General Duties</h3>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Prioritize staff responsibilities over gameplay.</li>
-        <li>Maintain professional interactions with all members.</li>
-        <li>Report bugs within 24 hours. Exploiting unreported bugs is prohibited.</li>
-        <li>Do not leak any confidential information (staff tickets, Discord, internal discussions).</li>
-        <li>All promotions are decided by management; hints or promises are forbidden.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- IN-GAME RULES -->
-  <section id="ingame" class="section-content hidden space-y-6">
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-green-500">
-      <h2 class="text-3xl font-bold text-green-300 mb-3">NovaQuest In-Game Rules</h2>
+  <!-- Transparency Section -->
+  <section id="transparency" class="tab-content active">
+    <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 border-l-8 border-pink-500 transition-transform transform hover:scale-105">
+      <h2 class="text-3xl font-extrabold text-pink-400 mb-4">Transparency & Public Information Policy</h2>
+      <p class="mb-3">As the founder of <strong>NovaQuest</strong>, I am committed to making all information public to the community. Before NovaQuest, I worked as staff on multiple servers where founders were not transparent. This will not happen here.</p>
+      <p class="mb-3">By sharing information openly, both staff and players can build trust and work together effectively. All decisions, including in-game rules, staff expectations, punishments, and appeals, will be public. This ensures:</p>
       <ul class="list-disc pl-6 space-y-2">
-        <li>Ignorance of the rules is not a valid excuse.</li>
-        <li>No using cheat software or unfair advantage: fly, X-ray, macros, nukers, AFK automation, boosting others.</li>
-        <li>Alternative accounts are forbidden without founder approval. Multiple players on the same IP must submit a ticket.</li>
-        <li>Server attacks, DDoS, IP grabbing, or malicious links → IP ban + report to Mojang & host.</li>
-        <li>IRL trading is prohibited; attempting or suggesting counts as a network removal offense.</li>
-        <li>Gambling or player-run casinos are forbidden unless NovaQuest-approved.</li>
+        <li>Players know exactly what to expect from staff</li>
+        <li>Punishments are clear and consistent</li>
+        <li>Appeals show the second chances we provide</li>
       </ul>
+      <p class="mt-3">Our goal is to maintain fairness, transparency, and clarity, preventing loopholes while keeping the server safe and enjoyable for everyone.</p>
     </div>
   </section>
 
-  <!-- DISCORD RULES -->
-  <section id="discord" class="section-content hidden space-y-6">
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-purple-500">
-      <h2 class="text-3xl font-bold text-purple-300 mb-3">NovaQuest Discord Rules</h2>
-      <ul class="list-disc pl-6 space-y-2">
-        <li>Be respectful; no harassment, bullying, or discrimination.</li>
-        <li>No NSFW content in non-NSFW channels.</li>
-        <li>No spamming, advertising, or impersonation.</li>
-        <li>Voice chat must remain respectful and safe for all.</li>
-        <li>Bot commands must not be abused.</li>
-        <li>Breaking rules may result in warnings, mutes, kicks, or bans.</li>
-      </ul>
+  <!-- Staff Rules Section -->
+  <section id="staff" class="tab-content">
+    <div class="space-y-6">
+
+      <!-- Introduction -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-indigo-500">
+        <h2 class="text-3xl font-bold text-indigo-300 mb-2">NovaQuest Staff Rules & Expectations</h2>
+        <p>This guide is publicly available to outline staff expectations and allow players to give feedback if they believe a staff member violates these guidelines.</p>
+      </div>
+
+      <!-- General Duties -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-indigo-500">
+        <button onclick="toggleCollapse('duties')" class="w-full flex items-center justify-between focus:outline-none">
+          <h3 class="text-2xl font-bold text-indigo-300">General Staff Duties</h3>
+          <span class="text-indigo-300 font-bold">▼</span>
+        </button>
+        <div id="duties" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Prioritize staff responsibilities over gameplay.</li>
+            <li>Maintain professionalism at all times.</li>
+            <li>Do not hint at promotions; management and founder decide all promotions.</li>
+            <li>Report bugs within 24 hours; using unreported bugs is a strikeable offense.</li>
+            <li>Do not leak confidential information; leaking → instant demotion/removal.</li>
+            <li>Do not close tickets prematurely unless player is uncooperative or hasn’t replied in 24 hours.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hierarchy & Permissions -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-yellow-500">
+        <button onclick="toggleCollapse('hierarchy')" class="w-full flex items-center justify-between focus:outline-none">
+          <h3 class="text-2xl font-bold text-yellow-300">Hierarchy & Permissions</h3>
+          <span class="text-yellow-300 font-bold">▼</span>
+        </button>
+        <div id="hierarchy" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li><strong>Helpers:</strong> Answer questions, report bugs. Permissions: Warn, Kick, Mute.</li>
+            <li><strong>JrMods:</strong> Handle exploiters, ban-worthy issues. Permissions: Warn, Kick, Mute, Ban, System Access.</li>
+            <li><strong>Mods:</strong> Guide Helpers & JrMods, ensure full understanding of rules and mechanics.</li>
+            <li><strong>SrMods:</strong> Mentor lower staff, accountable for training, reviewed for Admin promotion.</li>
+            <li><strong>Admins+:</strong> Handle all issues, oversee compliance. Leaks → demotion/removal.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Strike System -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-red-500">
+        <button onclick="toggleCollapse('strikes')" class="w-full flex items-center justify-between focus:outline-none">
+          <h3 class="text-2xl font-bold text-red-300">Strike System</h3>
+          <span class="text-red-300 font-bold">▼</span>
+        </button>
+        <div id="strikes" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>3 strikes per staff, reset every 6 months, logged permanently.</li>
+            <li>Accumulation/severity may lead to demotion or removal.</li>
+            <li>Strikeable offenses: impolite behavior, misuse of commands, failure to report bugs, leaking info.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Activity & Inactivity -->
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-teal-500">
+        <button onclick="toggleCollapse('activity')" class="w-full flex items-center justify-between focus:outline-none">
+          <h3 class="text-2xl font-bold text-teal-300">Activity & Inactivity</h3>
+          <span class="text-teal-300 font-bold">▼</span>
+        </button>
+        <div id="activity" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Management monitors engagement; no strict minimum.</li>
+            <li>Inactivity >3 months may result in demotion; possible reinstatement at last role.</li>
+            <li>SrMods must maintain high activity; demotion possible without guaranteed reinstatement.</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- TRANSPARENCY -->
-  <section id="transparency" class="section-content hidden space-y-6">
-    <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-pink-500">
-      <h2 class="text-3xl font-bold text-pink-300 mb-3">Transparency Policy</h2>
-      <p>
-        As the founder of NovaQuest, all staff actions, rules, and decisions are public to ensure trust and fairness. 
-        Punishments, appeals, and rule changes are visible so players see accountability and progress. 
-        This approach ensures the community knows we prioritize safety, fairness, and enjoyment.
-      </p>
+  <!-- In-Game Rules Section -->
+  <section id="ingame" class="tab-content">
+    <div class="space-y-6">
+
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-green-500">
+        <h2 class="text-3xl font-bold text-green-300 mb-4">NovaQuest In-Game Rules</h2>
+
+        <!-- Unfair Advantage -->
+        <button onclick="toggleCollapse('unfair')" class="w-full flex items-center justify-between focus:outline-none">
+          <h3 class="text-2xl font-bold text-red-400">Unfair Advantage</h3>
+          <span class="text-red-400 font-bold">▼</span>
+        </button>
+        <div id="unfair" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Cheat software, hacked clients, automation (X-Ray, Fly, KillAura, Macros, etc.)</li>
+            <li>AFK grinding or failing staff checks intentionally</li>
+            <li>Boosting other players or leaderboard manipulation</li>
+            <li>Alternative accounts require founder approval; multiple people on same IP must submit a ticket</li>
+            <li>Server attacks (lagging, DDoS, malicious links) → IP ban + report to Mojang & host</li>
+          </ul>
+        </div>
+
+        <!-- Competitive -->
+        <button onclick="toggleCollapse('competitive')" class="w-full flex items-center justify-between focus:outline-none mt-4">
+          <h3 class="text-2xl font-bold text-red-500">Competitive Violations</h3>
+          <span class="text-red-500 font-bold">▼</span>
+        </button>
+        <div id="competitive" class="collapse-content mt-2">
+          <p class="font-semibold mb-2">Punishment: 3-Day Ban + Stat Wipe + Leaderboard Removal + Competitive Ban</p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>First offense: 3 days</li>
+            <li>Second offense: 7 days</li>
+            <li>Third offense: 14 days</li>
+          </ul>
+        </div>
+
+        <!-- IRL Trading -->
+        <button onclick="toggleCollapse('irl')" class="w-full flex items-center justify-between focus:outline-none mt-4">
+          <h3 class="text-2xl font-bold text-teal-300">IRL Trading</h3>
+          <span class="text-teal-300 font-bold">▼</span>
+        </button>
+        <div id="irl" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Trading with real money or external services is strictly prohibited.</li>
+            <li>Attempting, suggesting, or offering counts as a violation.</li>
+          </ul>
+        </div>
+
+        <!-- Gambling -->
+        <button onclick="toggleCollapse('gambling')" class="w-full flex items-center justify-between focus:outline-none mt-4">
+          <h3 class="text-2xl font-bold text-yellow-300">Gambling</h3>
+          <span class="text-yellow-300 font-bold">▼</span>
+        </button>
+        <div id="gambling" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Player-run casinos/gambling are prohibited per EULA.</li>
+            <li>Mentioning casinos or gambling is not allowed unless official NovaQuest-approved.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discord Rules Section -->
+  <section id="discord" class="tab-content">
+    <div class="space-y-6">
+
+      <div class="bg-gray-800 rounded-2xl shadow-lg p-6 border-l-8 border-purple-500">
+        <h2 class="text-3xl font-bold text-purple-300 mb-4">NovaQuest Discord Rules</h2>
+
+        <!-- General -->
+        <button onclick="toggleCollapse('generalDiscord')" class="w-full flex items-center justify-between focus:outline-none">
+          <h3 class="text-2xl font-bold text-yellow-300">General Conduct</h3>
+          <span class="text-yellow-300 font-bold">▼</span>
+        </button>
+        <div id="generalDiscord" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Be respectful to everyone.</li>
+            <li>No harassment, bullying, hate speech, or discrimination.</li>
+            <li>No spamming or excessive caps.</li>
+            <li>No advertising other servers.</li>
+          </ul>
+        </div>
+
+        <!-- Voice -->
+        <button onclick="toggleCollapse('voiceDiscord')" class="w-full flex items-center justify-between focus:outline-none mt-4">
+          <h3 class="text-2xl font-bold text-green-300">Voice Chat Rules</h3>
+          <span class="text-green-300 font-bold">▼</span>
+        </button>
+        <div id="voiceDiscord" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>No harassment or discrimination in voice chat.</li>
+            <li>Keep conversations respectful and appropriate.</li>
+          </ul>
+        </div>
+
+        <!-- Bots -->
+        <button onclick="toggleCollapse('botsDiscord')" class="w-full flex items-center justify-between focus:outline-none mt-4">
+          <h3 class="text-2xl font-bold text-purple-300">Bots & Automation</h3>
+          <span class="text-purple-300 font-bold">▼</span>
+        </button>
+        <div id="botsDiscord" class="collapse-content mt-2">
+          <ul class="list-disc pl-6 space-y-2">
+            <li>No spamming bot commands or abusing bot systems.</li>
+            <li>Follow instructions for bot usage.</li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </section>
 
 </main>
 
-<footer class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white text-center py-4 mt-12">
+<footer class="bg-gradient-to-r from-indigo-700 to-purple-700 text-white text-center py-4 shadow-inner mt-8">
   &copy; 2026 NovaQuest. All rights reserved.
 </footer>
 
